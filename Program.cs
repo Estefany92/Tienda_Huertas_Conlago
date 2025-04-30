@@ -1,4 +1,8 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Tienda_Huertas_Conlago_DB>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Tienda_Huertas_Conlago_DB") ?? throw new InvalidOperationException("Connection string 'Tienda_Huertas_Conlago_DB' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
